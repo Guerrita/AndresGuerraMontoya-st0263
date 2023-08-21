@@ -3,7 +3,6 @@
 import grpc
 
 import archivo_pb2 as archivo__pb2
-from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
 class ArchivoStub(object):
@@ -17,12 +16,12 @@ class ArchivoStub(object):
         """
         self.ListarArchivos = channel.unary_unary(
                 '/archivo.Archivo/ListarArchivos',
-                request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+                request_serializer=archivo__pb2.ArchivoVacio.SerializeToString,
                 response_deserializer=archivo__pb2.ArchivoLista.FromString,
                 )
         self.BuscarArchivos = channel.unary_unary(
                 '/archivo.Archivo/BuscarArchivos',
-                request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+                request_serializer=archivo__pb2.ArchivoVacio.SerializeToString,
                 response_deserializer=archivo__pb2.ArchivoLista.FromString,
                 )
 
@@ -47,12 +46,12 @@ def add_ArchivoServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'ListarArchivos': grpc.unary_unary_rpc_method_handler(
                     servicer.ListarArchivos,
-                    request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                    request_deserializer=archivo__pb2.ArchivoVacio.FromString,
                     response_serializer=archivo__pb2.ArchivoLista.SerializeToString,
             ),
             'BuscarArchivos': grpc.unary_unary_rpc_method_handler(
                     servicer.BuscarArchivos,
-                    request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                    request_deserializer=archivo__pb2.ArchivoVacio.FromString,
                     response_serializer=archivo__pb2.ArchivoLista.SerializeToString,
             ),
     }
@@ -77,7 +76,7 @@ class Archivo(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/archivo.Archivo/ListarArchivos',
-            google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            archivo__pb2.ArchivoVacio.SerializeToString,
             archivo__pb2.ArchivoLista.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -94,7 +93,7 @@ class Archivo(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/archivo.Archivo/BuscarArchivos',
-            google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            archivo__pb2.ArchivoVacio.SerializeToString,
             archivo__pb2.ArchivoLista.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
