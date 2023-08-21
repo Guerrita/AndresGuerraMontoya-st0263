@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+
+package archivo;
+
+message ArchivoLista {
+  repeated string archivos = 1;
+}
+
+service Archivo {
+  rpc ListarArchivos (google.protobuf.Empty) returns (ArchivoLista);
+  rpc BuscarArchivos (google.protobuf.Empty) returns (ArchivoLista);
+}
