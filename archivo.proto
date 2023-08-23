@@ -4,7 +4,7 @@ syntax = "proto3";
 
 package archivo;
 
-message ArchivoVacio {}  // Mensaje vacío personalizado
+message ArchivoVacio {}  // Mensaje vacío personalizad
 
 message ArchivoLista {
   repeated string archivos = 1;
