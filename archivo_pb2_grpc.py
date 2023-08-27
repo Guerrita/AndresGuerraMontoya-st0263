@@ -21,7 +21,7 @@ class ArchivoStub(object):
                 )
         self.BuscarArchivos = channel.unary_unary(
                 '/archivo.Archivo/BuscarArchivos',
-                request_serializer=archivo__pb2.ArchivoVacio.SerializeToString,
+                request_serializer=archivo__pb2.ArchivoRequest.SerializeToString,
                 response_deserializer=archivo__pb2.ArchivoLista.FromString,
                 )
 
@@ -51,7 +51,7 @@ def add_ArchivoServicer_to_server(servicer, server):
             ),
             'BuscarArchivos': grpc.unary_unary_rpc_method_handler(
                     servicer.BuscarArchivos,
-                    request_deserializer=archivo__pb2.ArchivoVacio.FromString,
+                    request_deserializer=archivo__pb2.ArchivoRequest.FromString,
                     response_serializer=archivo__pb2.ArchivoLista.SerializeToString,
             ),
     }
@@ -93,7 +93,7 @@ class Archivo(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/archivo.Archivo/BuscarArchivos',
-            archivo__pb2.ArchivoVacio.SerializeToString,
+            archivo__pb2.ArchivoRequest.SerializeToString,
             archivo__pb2.ArchivoLista.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

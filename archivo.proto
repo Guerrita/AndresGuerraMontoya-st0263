@@ -1,10 +1,12 @@
 syntax = "proto3";
 
-
-
 package archivo;
 
 message ArchivoVacio {}  // Mensaje vacío personalizado
+
+message ArchivoRequest {
+  string nombre_archivo = 1;
+}
 
 message ArchivoLista {
   repeated string archivos = 1;
@@ -12,5 +14,5 @@ message ArchivoLista {
 
 service Archivo {
   rpc ListarArchivos (ArchivoVacio) returns (ArchivoLista);
-  rpc BuscarArchivos (ArchivoVacio) returns (ArchivoLista);
+  rpc BuscarArchivos (ArchivoRequest) returns (ArchivoLista);
 }

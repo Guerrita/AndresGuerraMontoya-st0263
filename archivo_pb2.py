@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rarchivo.proto\x12\x07\x61rchivo\"\x0e\n\x0c\x41rchivoVacio\" \n\x0c\x41rchivoLista\x12\x10\n\x08\x61rchivos\x18\x01 \x03(\t2\x89\x01\n\x07\x41rchivo\x12>\n\x0eListarArchivos\x12\x15.archivo.ArchivoVacio\x1a\x15.archivo.ArchivoLista\x12>\n\x0e\x42uscarArchivos\x12\x15.archivo.ArchivoVacio\x1a\x15.archivo.ArchivoListab\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rarchivo.proto\x12\x07\x61rchivo\"\x0e\n\x0c\x41rchivoVacio\"(\n\x0e\x41rchivoRequest\x12\x16\n\x0enombre_archivo\x18\x01 \x01(\t\" \n\x0c\x41rchivoLista\x12\x10\n\x08\x61rchivos\x18\x01 \x03(\t2\x8b\x01\n\x07\x41rchivo\x12>\n\x0eListarArchivos\x12\x15.archivo.ArchivoVacio\x1a\x15.archivo.ArchivoLista\x12@\n\x0e\x42uscarArchivos\x12\x17.archivo.ArchivoRequest\x1a\x15.archivo.ArchivoListab\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -23,8 +23,10 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   DESCRIPTOR._options = None
   _globals['_ARCHIVOVACIO']._serialized_start=26
   _globals['_ARCHIVOVACIO']._serialized_end=40
-  _globals['_ARCHIVOLISTA']._serialized_start=42
-  _globals['_ARCHIVOLISTA']._serialized_end=74
-  _globals['_ARCHIVO']._serialized_start=77
-  _globals['_ARCHIVO']._serialized_end=214
+  _globals['_ARCHIVOREQUEST']._serialized_start=42
+  _globals['_ARCHIVOREQUEST']._serialized_end=82
+  _globals['_ARCHIVOLISTA']._serialized_start=84
+  _globals['_ARCHIVOLISTA']._serialized_end=116
+  _globals['_ARCHIVO']._serialized_start=119
+  _globals['_ARCHIVO']._serialized_end=258
 # @@protoc_insertion_point(module_scope)
