@@ -67,22 +67,16 @@ class ApiGateway:
             self._enqueue_request("listar_archivos")
             return ["Error en comunicación gRPC, encolando petición..."]
 
-    # def buscar_archivos(self):
-    #     try:
-    #         response = self.stub_mserv2.BuscarArchivos(archivo_pb2.ArchivoVacio())
-    #         return response.archivos
-    #     except grpc.RpcError as e:
-    #         self._enqueue_request("buscar_archivos")
-    #         return ["Error en comunicación gRPC, encolando petición..."]
-
-    # def buscar_archivos_con_nombre(self, nombre_archivo):
-    #     try:
-    #         request = archivo_pb2.ArchivoRequest(nombre_archivo=nombre_archivo)
-    #         response = self.stub_mserv2.BuscarArchivos(request)
-    #         return response.archivos
-    #     except grpc.RpcError as e:
-    #         self._enqueue_request("buscar_archivos")
-    #         return ["Error en comunicación gRPC, encolando petición..."]
+    def buscar_archivos_con_nombre(self, nombre_archivo):
+        try:
+            request = archivo_pb2.ArchivoRequest(nombre_archivo=nombre_archivo)
+            response = self.stub_mserv2.BuscarArchivos(request)
+            print(response)
+            return response.archivos
+        except Exception as e: #grpc.RpcError as e:
+            print(e)
+            # self._enqueue_request("buscar_archivos")
+            # return ["Error en comunicación gRPC, encolando petición..."]
 
 app = Flask(__name__)
 api_gateway = ApiGateway()
@@ -94,11 +88,11 @@ def listar_archivos():
     return jsonify(archivos_serializable), 200
 
 
-# @app.route('/buscar_archivos/<nombre_archivo>', methods=['GET'])
-# def buscar_archivos_con_parametro(nombre_archivo):
-#     archivos = api_gateway.buscar_archivos_con_nombre(nombre_archivo)
-#     archivos_serializable = list(archivos)  # Convertir a lista de Python
-#     return jsonify(archivos_serializable), 200
+@app.route('/buscar_archivos/<nombre_archivo>', methods=['GET'])
+def buscar_archivos_con_parametro(nombre_archivo):
+    archivos = api_gateway.buscar_archivos_con_nombre(nombre_archivo)
+    archivos_serializable = list(archivos) 
+    return jsonify(archivos_serializable), 200
 
 
 if __name__ == '__main__':

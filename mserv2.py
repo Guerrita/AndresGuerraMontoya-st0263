@@ -11,16 +11,9 @@ load_dotenv()
 MSERV2_PORT = os.getenv("MSERV2_PORT")
 
 class ArchivoServicer(archivo_pb2_grpc.ArchivoServicer):
-    # def BuscarArchivos(self, request, context):
-    #     return archivo_pb2.ArchivoLista(archivos=['archivo1.txt'])
     def BuscarArchivos(self, request, context):
-        directorio = "./files"
-        archivo = os.listdir(directorio + nombre_archivo)
-        print(archivo)
         nombre_archivo = request.nombre_archivo
         archivo_path = os.path.join('./files', nombre_archivo)
-        print(os.path.exists(archivo_path))
-
         if os.path.exists(archivo_path):
             return archivo_pb2.ArchivoLista(archivos=[nombre_archivo])
         else:
