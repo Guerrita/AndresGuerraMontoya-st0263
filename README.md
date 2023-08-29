@@ -80,7 +80,6 @@ Lo primero es abrir 4 terminales y en cada una hacer lo siguiente
 
 - Lenguaje de Programación: Python
 - Librerías y Paquetes: grpc, flask, pika
-
 - blinker==1.6.2
 - click==8.1.7
 - colorama==0.4.6
@@ -98,7 +97,7 @@ Lo primero es abrir 4 terminales y en cada una hacer lo siguiente
 - zipp==3.16.2
 
 
-### IP
+### IPs
 
 - http://52.72.163.26:5000/listar_archivos
 - http://52.72.163.26:5000/buscar_archivos/nombre-archivo
@@ -106,11 +105,8 @@ Lo primero es abrir 4 terminales y en cada una hacer lo siguiente
 
 ### Guía de Usuario
 
-[Instrucciones para que los usuarios utilicen la aplicación]
+Para utilizar la aplicación se deben iniciar las instancias de AWS y realizar las peticiones a las IPs desde tu cliente favorito (Postman, thunderclient, etc)
 
-## 5. Otra Información Relevante
-
-[Cualquier otra información relevante sobre el proyecto]
 
 ## Referencias
 
