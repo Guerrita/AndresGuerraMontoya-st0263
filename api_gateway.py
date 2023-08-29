@@ -23,7 +23,10 @@ class ApiGateway:
         
         self.channel_mserv2 = grpc.insecure_channel(MSERV2_URL)
         self.stub_mserv2 = archivo_pb2_grpc.ArchivoStub(self.channel_mserv2)
-        self.rabbitmq_connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+        credentials = pika.PlainCredentials('guest', 'guest')
+        self.rabbitmq_connection = pika.BlockingConnection(
+            pika.ConnectionParameters('localhost', credentials=credentials)
+        )
         self.rabbitmq_channel = self.rabbitmq_connection.channel()
         self.rabbitmq_channel.queue_delete(queue='request_queue')
         self.rabbitmq_channel.queue_declare(queue='request_queue')
