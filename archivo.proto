@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package archivo;
 
-message ArchivoVacio {}  // Mensaje vacío personalizado
+message ArchivoVacio {}  // Mensaje vacío personalizad
 
 message ArchivoRequest {
   string nombre_archivo = 1;
