@@ -1,12 +1,12 @@
-# API Gateway y Microservicios - STxxxx <Nombre de la Materia>
+# API Gateway y Microservicios - ST0263
 
 ## Estudiante(s):
 - Nombre: ANDRES GUERRA MONTOYA
 - Correo Electrónico: aamontoya@eafit.edu.co
 
 ## Profesor:
-- Nombre: [Nombre del Profesor]
-- Correo Electrónico: [Correo Electrónico del Profesor]
+- Nombre: EDWIN NELSON MONTOYA MUNERA
+- Correo Electrónico: emontoya@eafit.edu.co
 
 ---
 
