@@ -31,6 +31,8 @@ class ApiGateway:
         self.rabbitmq_channel.queue_delete(queue='request_queue')
         self.rabbitmq_channel.queue_declare(queue='request_queue')
 
+        self.rabbitmq_lock = threading.Lock()
+
     def __del__(self):
         # Cerrar conexiones y canales al destruir la instancia
         self.rabbitmq_channel.close()
@@ -38,12 +40,13 @@ class ApiGateway:
 
     def _enqueue_request(self, method_name):
         try:
-            if self.rabbitmq_channel.is_open:
-                # Realiza la encolación solo si el canal está abierto
-                with self.rabbitmq_connection:
-                    self.rabbitmq_channel.basic_publish(exchange='', routing_key='request_queue', body=method_name)
-            else:
-                print("El canal está cerrado, no se pudo encolar la petición.")
+            with self.rabbitmq_lock:
+                if self.rabbitmq_channel.is_open:
+                    # Realiza la encolación solo si el canal está abierto
+                    with self.rabbitmq_connection:
+                        self.rabbitmq_channel.basic_publish(exchange='', routing_key='request_queue', body=method_name)
+                else:
+                    print("El canal está cerrado, no se pudo encolar la petición.")
         except Exception as e:
             print("Error al encolar petición:", str(e))
 
